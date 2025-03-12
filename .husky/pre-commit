@@ -27,4 +27,7 @@ if [ -f "$PACKAGE_PATH" ]; then
     # Add the modified files to git
     git add "$PACKAGE_PATH"
     git add package-lock.json
+else
+    echo "Error: package.json not found"
+    exit 1
 fi
