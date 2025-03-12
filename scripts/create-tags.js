@@ -6,8 +6,12 @@ const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const version = packageJson.version;
 
 try {
-    // Create version tag
-    execSync(`git tag "v${version}"`);
+    try {
+        // Create version tag
+        execSync(`git tag "v${version}"`);
+    } catch (error) {
+        // Tag already exists, that's fine
+    }
 
     // Delete existing latest tag if it exists
     try {
