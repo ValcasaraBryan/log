@@ -16,3 +16,4 @@ execSync(`npm version ${newVersion} --no-git-tag-version`);
 
 // Stage the modified package.json
 execSync('git add package.json'); 
+execSync('git add package-lock.json');
