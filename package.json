@@ -1,13 +1,14 @@
 {
   "name": "@local/simply-logger",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simply logger",
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
   "homepage": "https://github.com/ValcasaraBryan/simply-logger#readme",
   "dependencies": {
     "jest": "^29.7.0"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
   }
 }
