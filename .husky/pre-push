@@ -21,6 +21,6 @@ fi
 git tag "latest"
 
 # Force push the tags
-git push --tags -f
+git push --tags
 
 echo "Successfully created and pushed tags: v$version and latest" 
