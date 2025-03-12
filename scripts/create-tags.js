@@ -12,6 +12,7 @@ try {
     // Delete existing latest tag if it exists
     try {
         execSync('git tag -d "latest"');
+        execSync('git push origin :refs/tags/latest');
     } catch (error) {
         // Tag doesn't exist, that's fine
     }
