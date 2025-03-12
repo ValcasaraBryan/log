@@ -1,3 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
 COMMIT_MSG_FILE=$1
 COMMIT_MSG=$(head -n 1 "$COMMIT_MSG_FILE")
 REGEX_PATTERN="^(feat|fix|chore|docs|style|refactor|perf|test|merge|lint)(\([a-zA-Z0-9-]+\))?: .{1,75}$"
