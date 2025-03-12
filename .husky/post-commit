@@ -14,6 +14,8 @@ if [ -f "$PACKAGE_PATH" ]; then
         if git rev-parse -q --verify refs/tags/latest >/dev/null; then
             git tag -d "latest"
             git push origin :refs/tags/latest 2>/dev/null || true
+        else
+            echo "Error: latest tag not found"
         fi
         
         # Create new latest tag
@@ -23,8 +25,12 @@ if [ -f "$PACKAGE_PATH" ]; then
         git push --tags -f
         
         echo "Successfully created and pushed tags: v$CURRENT_VERSION and latest"
+    else
+        echo "Error: version not found in package.json"
+        exit 1
     fi
 else
     echo "Error: package.json not found"
     exit 1
 fi
+exit 0
