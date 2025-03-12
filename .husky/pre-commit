@@ -2,9 +2,3 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 node scripts/version-bump.js
-
-# Commit the changes
-git commit -m "docs: add patch version"
-
-
-
