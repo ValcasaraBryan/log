@@ -32,9 +32,9 @@ export function error(message: any, type: EmojisKey = "ERROR") {
     console.error(formatLog(message, type));
 }
 
-export { EmojisKey };
 export default {
     info,
     warn,
-    error
+    error,
+    emojis: EmojisMap
 };
