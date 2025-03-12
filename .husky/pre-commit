@@ -8,6 +8,7 @@ if [ -f "$PACKAGE_PATH" ]; then
     # Extract current version number
     CURRENT_VERSION=$(grep -oP '(?<="version": ")[0-9]+\.[0-9]+\.[0-9]+(?=")' "$PACKAGE_PATH")
     
+    
     if [ ! -z "$CURRENT_VERSION" ]; then
         # Split version into major.minor.patch
         MAJOR=$(echo $CURRENT_VERSION | cut -d. -f1)
