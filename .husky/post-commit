@@ -1,3 +1,7 @@
+#!/usr/bin/env sh
+
+echo "post-commit"
+
 # Path to package.json
 PACKAGE_PATH="package.json"
 
