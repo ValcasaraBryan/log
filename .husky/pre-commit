@@ -1,46 +1,5 @@
 #!/usr/bin/env sh
 
-echo "Starting version bump..."
+echo "pre-commit"
 
-# Path to package.json
-PACKAGE_PATH="package.json"
-
-# Check if package.json exists
-if [ -f "$PACKAGE_PATH" ]; then
-    # Extract current version number
-    CURRENT_VERSION=$(grep -oP '(?<="version": ")[0-9]+\.[0-9]+\.[0-9]+(?=")' "$PACKAGE_PATH")
-    
-    if [ ! -z "$CURRENT_VERSION" ]; then
-        echo "Current version: $CURRENT_VERSION"
-        
-        # Split version into major.minor.patch
-        MAJOR=$(echo $CURRENT_VERSION | cut -d. -f1)
-        MINOR=$(echo $CURRENT_VERSION | cut -d. -f2)
-        PATCH=$(echo $CURRENT_VERSION | cut -d. -f3)
-        
-        # Increment patch version
-        NEW_PATCH=$((PATCH + 1))
-        NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
-        
-        echo "New version: $NEW_VERSION"
-        
-        # Update only the version line in the file, preserving formatting
-        sed -i -E "s/([ ]*\"version\": \")[0-9]+\.[0-9]+\.[0-9]+(\")$/\1$NEW_VERSION\2/" "$PACKAGE_PATH"
-        
-        # Fix line endings in package.json
-        dos2unix "$PACKAGE_PATH" 2>/dev/null || true
-        
-        # Add the modified files to git
-        git add "$PACKAGE_PATH"
-        git add package-lock.json
-        
-        echo "Version bump completed successfully"
-    else
-        echo "Error: version not found in package.json"
-        exit 1
-    fi
-else
-    echo "Error: package.json not found"
-    exit 1
-fi
-exit 0
+node scripts/version-bump.js
