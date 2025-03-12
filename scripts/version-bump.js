@@ -15,4 +15,20 @@ const newVersion = `${major}.${minor}.${Number(patch) + 1}`;
 execSync(`npm version ${newVersion} --no-git-tag-version`);
 
 // Stage the modified package.json
-execSync('git add package.json'); 
+execSync('git add package.json');
+
+// Create version tag
+execSync(`git tag "v${newVersion}"`);
+
+// Delete existing latest tag if it exists
+try {
+    execSync('git tag -d "latest"');
+} catch (error) {
+    // Tag doesn't exist, that's fine
+}
+
+// Create new latest tag
+execSync('git tag "latest"');
+
+// Force push the tags
+execSync('git push --tags -f'); 
