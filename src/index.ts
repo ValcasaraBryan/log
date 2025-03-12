@@ -1,15 +1,8 @@
 import EmojisMap, { EmojisKey } from "./types";
 
-/**
- * Formats a log message with timestamp and emoji type indicator
- * @param message - The message to log (can be any type)
- * @param type - The type of log message from EmojisKey type
- * @returns Formatted log message with timestamp and emoji
- */
 function formatLog(message: any, type: EmojisKey = "INFO") {
-    const timestamp = new Date().toISOString();
-    const emoji = EmojisMap[type] || EmojisMap[type.toUpperCase()] || '';
-    return `[${timestamp}] ${emoji} ${message}`;
+    const emoji = EmojisMap[type];
+    return `[${new Date().toISOString()}] ${emoji} ${message}`;
 }
 
 /**
@@ -39,6 +32,7 @@ export function error(message: any, type: EmojisKey = "ERROR") {
     console.error(formatLog(message, type));
 }
 
+export { EmojisMap };
 export default {
     info,
     warn,
