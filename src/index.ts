@@ -1,4 +1,4 @@
-import EmojisMap, { EmojisKey } from "./types";
+import EmojisMap, { EmojisKey, EmojisKeys } from "./types";
 
 function formatLog(message: any, type: EmojisKey = "INFO") {
     const emoji = EmojisMap[type];
@@ -36,5 +36,6 @@ export default {
     info,
     warn,
     error,
-    emojis: EmojisMap
+    emojis: EmojisMap,
+    keys: EmojisKeys
 };
