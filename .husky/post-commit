@@ -27,4 +27,7 @@ if [ -f "$PACKAGE_PATH" ]; then
         
         echo "Successfully created and pushed tags: v$CURRENT_VERSION and latest"
     fi
+else
+    echo "Error: package.json not found"
+    exit 1
 fi
