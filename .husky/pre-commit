@@ -6,7 +6,5 @@ node scripts/version-bump.js
 # Commit the changes
 git commit -m "docs: add patch version"
 
-# Push the changes
-git push
 
 
