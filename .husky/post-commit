@@ -1,0 +1,29 @@
+ #!/bin/sh
+
+# Path to package.json
+PACKAGE_PATH="package.json"
+
+# Check if package.json exists
+if [ -f "$PACKAGE_PATH" ]; then
+    # Extract current version number
+    CURRENT_VERSION=$(grep -oP '(?<="version": ")[0-9]+\.[0-9]+\.[0-9]+(?=")' "$PACKAGE_PATH")
+    
+    if [ ! -z "$CURRENT_VERSION" ]; then
+        # Create version tag
+        git tag "v$CURRENT_VERSION"
+        
+        # Check if latest tag exists and delete it if it does
+        if git rev-parse -q --verify refs/tags/latest >/dev/null; then
+            git tag -d "latest"
+            git push origin :refs/tags/latest 2>/dev/null || true
+        fi
+        
+        # Create new latest tag
+        git tag "latest"
+        
+        # Force push the tags
+        git push --tags -f
+        
+        echo "Successfully created and pushed tags: v$CURRENT_VERSION and latest"
+    fi
+fi
