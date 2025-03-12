@@ -36,6 +36,4 @@ export default {
     info,
     warn,
     error,
-    emojis: EmojisMap,
-    keys: EmojisKeys
 };

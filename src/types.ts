@@ -7,5 +7,5 @@ const EmojisMap = {
 } as const;
 
 export type EmojisKey = keyof typeof EmojisMap;
-export const EmojisKeys = Object.keys(EmojisMap) as EmojisKey[];
+export const EmojisKeys: EmojisKey[] = Object.keys(EmojisMap) as EmojisKey[];
 export default EmojisMap;
