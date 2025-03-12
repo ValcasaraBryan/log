@@ -1,9 +1,12 @@
-const fs = require('fs');
 const { execSync } = require('child_process');
+const path = require('path');
 
 try {
-    // Read package.json
-    const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+    // Get absolute path to package.json
+    const packagePath = path.resolve(process.cwd(), 'package.json');
+    
+    // Get current version from package.json
+    const packageJson = require(packagePath);
     const currentVersion = packageJson.version;
     
     console.log('Current version:', currentVersion);
@@ -14,9 +17,8 @@ try {
     
     console.log('New version:', newVersion);
     
-    // Update package.json
-    packageJson.version = newVersion;
-    fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2) + '\n');
+    // Update version using npm version (without creating git tag)
+    execSync(`npm version ${newVersion} --no-git-tag-version`);
     
     // Stage the modified files
     execSync('git add package.json');
