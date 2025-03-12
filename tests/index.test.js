@@ -1,4 +1,5 @@
 const log = require('../src/index');
+const { default: emojis} = require('../src/types');
 
 describe('Logging functions', () => {
     let consoleSpy;
@@ -21,7 +22,7 @@ describe('Logging functions', () => {
         
         log.info('Test message');
         
-        expect(consoleSpy).toHaveBeenCalledWith(`[${mockTimestamp}] Test message`);
+        expect(consoleSpy).toHaveBeenCalledWith(`[${mockTimestamp}] ${emojis.INFO} Test message`);
     });
 
     test('warn() should log message with timestamp using console.warn', () => {
@@ -29,7 +30,7 @@ describe('Logging functions', () => {
         
         log.warn('Warning message');
         
-        expect(consoleSpy).toHaveBeenCalledWith(`[${mockTimestamp}] Warning message`);
+        expect(consoleSpy).toHaveBeenCalledWith(`[${mockTimestamp}] ${emojis.WARNING} Warning message`);
     });
 
     test('error() should log message with timestamp using console.error', () => {
@@ -37,6 +38,6 @@ describe('Logging functions', () => {
         
         log.error('Error message');
         
-        expect(consoleSpy).toHaveBeenCalledWith(`[${mockTimestamp}] Error message`);
+        expect(consoleSpy).toHaveBeenCalledWith(`[${mockTimestamp}] ${emojis.ERROR} Error message`);
     });
 });
