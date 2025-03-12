@@ -1,10 +1,13 @@
 {
-  "name": "@valcasara/simply-logger",
+  "name": "@local/simply-logger",
   "version": "1.0.0",
   "description": "A simply logger",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -18,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/ValcasaraBryan/log/issues"
   },
-  "homepage": "https://github.com/ValcasaraBryan/log#readme"
+  "homepage": "https://github.com/ValcasaraBryan/log#readme",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
 }
