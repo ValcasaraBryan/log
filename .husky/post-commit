@@ -8,7 +8,11 @@ if [ -f "$PACKAGE_PATH" ]; then
     
     if [ ! -z "$CURRENT_VERSION" ]; then
         # Create version tag
-        git tag "v$CURRENT_VERSION"
+        if ! git rev-parse -q --verify "refs/tags/v$CURRENT_VERSION" >/dev/null; then
+            git tag "v$CURRENT_VERSION"
+        else
+            echo "Error: tag v$CURRENT_VERSION already exists"
+        fi
         
         # Check if latest tag exists and delete it if it does
         if git rev-parse -q --verify refs/tags/latest >/dev/null; then
@@ -22,7 +26,7 @@ if [ -f "$PACKAGE_PATH" ]; then
         git tag "latest"
         
         # Force push the tags
-        git push --tags -f
+        git push --tags
         
         echo "Successfully created and pushed tags: v$CURRENT_VERSION and latest"
     else
