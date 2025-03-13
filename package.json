@@ -1,6 +1,6 @@
 {
   "name": "@local/simply-logger",
-  "version": "1.1.68",
+  "version": "1.1.69",
   "description": "A simply logger",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
