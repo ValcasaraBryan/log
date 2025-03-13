@@ -1,4 +1,4 @@
-import EmojisMap, { EmojisKey, EmojisKeys } from "./types";
+import EmojisMap, { EmojisKey } from "./types";
 
 function formatLog(message: any, type: EmojisKey = "INFO") {
     const emoji = EmojisMap[type];

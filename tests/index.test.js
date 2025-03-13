@@ -1,5 +1,5 @@
 const log = require('../src/index');
-const { default: emojis} = require('../src/types');
+const { default: emojis } = require('../src/types');
 
 describe('Logging functions', () => {
     let consoleSpy;
