@@ -1,6 +1,6 @@
 {
   "name": "@local/simply-logger",
-  "version": "1.1.69",
+  "version": "1.1.70",
   "description": "A simply logger",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,7 +34,6 @@
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.10",
-    "husky": "^9.1.7",
     "ts-jest": "^29.2.6",
     "typescript": "^5.8.2"
   }
